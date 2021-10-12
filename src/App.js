@@ -1,24 +1,38 @@
-import logo from './logo.svg';
+import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom'
+import { Layout } from 'antd';
 import './App.css';
+import Home from './components/pagehome/Home';
+import Nav from './components/pagehome/Nav';
+import Favourites from './components/fav/Favourites';
+
+const { Header, Content, Footer } = Layout;
 
 function App() {
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    
+    <>
+      <Router>
+        <Layout className="layout">
+          <Header>
+            <Nav />
+          </Header>
+          <Content style={{ padding: '0 50px' }}>
+            <div className="site-layout-content">
+              <Switch>
+                <Route path="/home" component={Home} />
+                <Route exact path="/favourties" component={Favourites} />
+                {/*<Route path="/list/:id" component={CoinDetail} />
+                <Route path="/login" component={Login}/>
+                <Route path="/forms" component={Forms}/>)
+                <Route path="*" component={NotFoundComponent} /> */}
+              </Switch>
+            </div>
+          </Content>
+          <Footer style={{ textAlign: 'center' }}>Superedings App</Footer>
+        </Layout>
+      </Router>
+    </>
   );
 }
 
