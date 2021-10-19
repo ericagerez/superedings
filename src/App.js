@@ -1,37 +1,33 @@
 import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom'
-import { Layout } from 'antd';
+import { ChakraProvider } from "@chakra-ui/react";
+import { extendTheme } from "@chakra-ui/react"
+
 import './App.css';
 import Home from './components/pagehome/Home';
-import Nav from './components/pagehome/Nav';
+import Nav from './components/navbar/Nav';
 import Favourites from './components/fav/Favourites';
 
-const { Header, Content, Footer } = Layout;
+const theme = extendTheme({
+	colors: {
+	  brand: {
+		100: "#ff7a00",
+		// ...
+		900: "#1a202c",
+	  },
+	},
+  })
 
 function App() {
 
   return (
     
     <>
-      <Router>
-        <Layout className="layout">
-          <Header>
-            <Nav />
-          </Header>
-          <Content style={{ padding: '0 50px' }}>
-            <div className="site-layout-content">
-              <Switch>
-                <Route path="/home" component={Home} />
-                <Route exact path="/favourties" component={Favourites} />
-                {/*<Route path="/list/:id" component={CoinDetail} />
-                <Route path="/login" component={Login}/>
-                <Route path="/forms" component={Forms}/>)
-                <Route path="*" component={NotFoundComponent} /> */}
-              </Switch>
-            </div>
-          </Content>
-          <Footer style={{ textAlign: 'center' }}>Superedings App</Footer>
-        </Layout>
-      </Router>
+		<ChakraProvider theme={theme}>
+			<Router>
+					
+					<Nav />
+			</Router>
+      </ChakraProvider>
     </>
   );
 }

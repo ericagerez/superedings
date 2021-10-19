@@ -1,11 +1,9 @@
-import { Layout } from 'antd';
+
 
 
 function Home () {
     return (
-        <Layout>
-            Página de home
-      </Layout>
+        <p>pagina home</p>
     )
 }
 

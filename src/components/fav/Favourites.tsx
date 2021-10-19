@@ -1,11 +1,8 @@
-import { Layout } from 'antd';
 
 
 function Favourites () {
     return (
-        <Layout>
-            Página de favoritos
-      </Layout>
+        <p>pagina de favoritos</p>
     )
 }
 
