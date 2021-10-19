@@ -24,8 +24,14 @@ function App() {
     <>
 		<ChakraProvider theme={theme}>
 			<Router>
-					
-					<Nav />
+				{/* <Nav /> */}
+				<Switch>
+					<Route path="/home" component={Home} />
+					{/* <Route path="/trending" component={About} />
+					<Route exact path="/search" component={CoinList} /> */}
+					<Route path="/fav" component={Favourites} />
+					{/* <Route path="*" component={NotFoundComponent} /> */}
+              </Switch>
 			</Router>
       </ChakraProvider>
     </>

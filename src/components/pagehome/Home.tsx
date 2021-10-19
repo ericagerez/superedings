@@ -1,10 +1,11 @@
-
-
+import Nav from '../navbar/Nav';
 
 function Home () {
     return (
-        <p>pagina home</p>
+        <Nav>
+            <p>pagina home</p>
+        </Nav>
     )
 }
 
-export default Home
+export default Home;

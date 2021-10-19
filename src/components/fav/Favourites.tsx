@@ -1,8 +1,10 @@
-
+import Nav from '../navbar/Nav';
 
 function Favourites () {
     return (
-        <p>pagina de favoritos</p>
+        <Nav>
+            <p>pagina de favoritos</p>
+        </Nav> 
     )
 }
 
