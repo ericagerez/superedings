@@ -1,9 +1,12 @@
 import Nav from '../navbar/Nav';
+import SuperHeroeCard from '../cards/SuperHeroeCard';
 
 function Home () {
     return (
         <Nav>
-            <p>pagina home</p>
+            <p>pagina homess</p>
+            <SuperHeroeCard/>
+            <SuperHeroeCard/>
         </Nav>
     )
 }
