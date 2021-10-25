@@ -1,12 +1,24 @@
+import { useEffect } from 'react'
 import Nav from '../navbar/Nav';
-import SuperHeroeCard from '../cards/SuperHeroeCard';
+import { useSelector, useDispatch } from 'react-redux';
+import TableCardsSuperheroes from '../cards/TableCardsSuperheroes';
+import { getAllSuperHeroes } from '../../actions/superHeroesActions';
+
 
 function Home () {
+
+    const dispatch: any = useDispatch();
+    const {superheroes, loading} = useSelector((state: any) => state.superHeroesReducer);
+
+    useEffect(() => {  dispatch(getAllSuperHeroes()) }, [])
+
     return (
         <Nav>
-            <p>pagina homess</p>
-            <SuperHeroeCard/>
-            <SuperHeroeCard/>
+            {
+                loading ? <p>Cargando...</p> :
+                <TableCardsSuperheroes listSuperheroes={superheroes} />
+            }
+            
         </Nav>
     )
 }
