@@ -1,4 +1,6 @@
-import { Box, Center, useColorModeValue, Heading, Text, Stack, Image, } from '@chakra-ui/react';
+import { Box, Center, useColorModeValue, Heading, IconButton, Stack, Image, } from '@chakra-ui/react';
+import { MdOutlineFavorite } from 'react-icons/md';
+import { TiEye } from 'react-icons/ti';
   
 export default function SuperHeroeCard(props: any) {
 
@@ -51,7 +53,16 @@ export default function SuperHeroeCard(props: any) {
 					{superheroe.name}
 				</Heading>
 				<Stack direction={'row'} align={'center'}>
-					<p>holaa</p>
+					<IconButton
+						aria-label="fav"
+						size="lg"
+						icon={<MdOutlineFavorite />}
+					/>
+					<IconButton
+						aria-label="see"
+						size="lg"
+						icon={<TiEye />}
+					/>
 				</Stack>
 			</Stack>
 			</Box>
