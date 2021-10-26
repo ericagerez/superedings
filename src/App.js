@@ -11,7 +11,7 @@ import Favourites from './components/fav/Favourites';
 const theme = extendTheme({
 	colors: {
 	  brand: {
-		100: "#ff7a00",
+		100: "#EDF2F7",
 		// ...
 		900: "#1a202c",
 	  },

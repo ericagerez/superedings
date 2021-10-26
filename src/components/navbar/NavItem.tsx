@@ -20,7 +20,7 @@ interface NavItemProps extends FlexProps {
           cursor="pointer"
           _hover={{
             bg: 'brand.100',
-            color: 'white',
+            color: 'black',
           }}
           {...rest}>
           {icon && (
@@ -28,7 +28,7 @@ interface NavItemProps extends FlexProps {
               mr="4"
               fontSize="16"
               _groupHover={{
-                color: 'white',
+                color: 'black',
               }}
               as={icon}
             />
