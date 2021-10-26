@@ -16,15 +16,16 @@ export default function SuperHeroeCard(props: any) {
     return (
 		<Center py={12}>
 			<Box
-			role={'group'}
-			p={6}
-			maxW={'330px'}
-			w={'full'}
-			bg={useColorModeValue('white', 'gray.800')}
-			boxShadow={'2xl'}
-			rounded={'lg'}
-			pos={'relative'}
-			zIndex={1}>
+				role={'group'}
+				p={6}
+				maxW={'330px'}
+				w={'full'}
+				bg={useColorModeValue('white', 'gray.800')}
+				boxShadow={'2xl'}
+				rounded={'lg'}
+				pos={'relative'}
+				zIndex={1}
+			>
 			<Box
 				rounded={'lg'}
 				mt={-12}
@@ -46,7 +47,8 @@ export default function SuperHeroeCard(props: any) {
 				_after: {
 					filter: 'blur(20px)',
 				},
-				}}>
+				}}
+			>
 				<Image
 					rounded={'lg'}
 					height={230}
@@ -56,9 +58,13 @@ export default function SuperHeroeCard(props: any) {
 				/>
 			</Box>
 			<Stack pt={10} align={'center'}>
-				<Heading fontSize={'2xl'} fontFamily={'body'} fontWeight={500}>
-					{superheroe.name}
-				</Heading>
+				{
+					details &&
+						<Heading fontSize={'2xl'} fontFamily={'body'} fontWeight={500}>
+							{superheroe.name}
+						</Heading>
+				}
+				
 				<Stack direction={'row'} align={'center'}>
 					<IconButton
 						aria-label="fav"

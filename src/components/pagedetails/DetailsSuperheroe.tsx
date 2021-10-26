@@ -1,18 +1,17 @@
-import { useLocation } from "react-router-dom";
 import Nav from '../navbar/Nav';
 import SuperHeroeCard from '../cards/SuperHeroeCard';
+import PanelDetails from '../pagedetails/PanelDetails';
 
 const DetailsSuperheroe = (props: any) => {
-
-    const location = useLocation();
-
-    return(
-        <Nav>
-            {
-                props.location.state ? <SuperHeroeCard 
+{/* <SuperHeroeCard 
                                             superheroe={props.location.state.superheroe} 
                                             details={false} 
-                                        /> : <p>Para ver los detalles de un superheroe por favor seleccionar uno en la home</p>
+                                        /> */}
+    return(
+        <Nav>
+            { props.location.state ?  
+                                        <PanelDetails superheroe={props.location.state.superheroe}/> : 
+                                        <p>Para ver los detalles de un superheroe por favor seleccionar uno en la home</p>
 
             }
             
