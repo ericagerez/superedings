@@ -1,10 +1,17 @@
+import { useHistory } from "react-router-dom";
 import { Box, Center, useColorModeValue, Heading, IconButton, Stack, Image, } from '@chakra-ui/react';
 import { MdOutlineFavorite } from 'react-icons/md';
 import { TiEye } from 'react-icons/ti';
   
 export default function SuperHeroeCard(props: any) {
 
-  const { superheroe: superheroe } = props;
+	let history = useHistory();
+	const { superheroe: superheroe, details: details } = props;
+
+	function seeDetails(): void  {
+		history.push("/details", {superheroe: superheroe});
+	}
+
 
     return (
 		<Center py={12}>
@@ -24,16 +31,16 @@ export default function SuperHeroeCard(props: any) {
 				pos={'relative'}
 				height={'230px'}
 				_after={{
-				transition: 'all .3s ease',
-				content: '""',
-				w: 'full',
-				h: 'full',
-				pos: 'absolute',
-				top: 5,
-				left: 0,
-				backgroundImage: `url(${superheroe.image.url})`,
-				filter: 'blur(15px)',
-				zIndex: -1,
+					transition: 'all .3s ease',
+					content: '""',
+					w: 'full',
+					h: 'full',
+					pos: 'absolute',
+					top: 5,
+					left: 0,
+					backgroundImage: `url(${superheroe.image.url})`,
+					filter: 'blur(15px)',
+					zIndex: -1,
 				}}
 				_groupHover={{
 				_after: {
@@ -41,11 +48,11 @@ export default function SuperHeroeCard(props: any) {
 				},
 				}}>
 				<Image
-				rounded={'lg'}
-				height={230}
-				width={282}
-				objectFit={'cover'}
-				src={superheroe.image.url}
+					rounded={'lg'}
+					height={230}
+					width={282}
+					objectFit={'cover'}
+					src={superheroe.image.url}
 				/>
 			</Box>
 			<Stack pt={10} align={'center'}>
@@ -58,11 +65,16 @@ export default function SuperHeroeCard(props: any) {
 						size="lg"
 						icon={<MdOutlineFavorite />}
 					/>
-					<IconButton
-						aria-label="see"
-						size="lg"
-						icon={<TiEye />}
-					/>
+					{
+						details && 
+							<IconButton
+							aria-label="see"
+							size="lg"
+							icon={<TiEye />}
+							onClick={seeDetails}
+						/>
+					}
+					
 				</Stack>
 			</Stack>
 			</Box>

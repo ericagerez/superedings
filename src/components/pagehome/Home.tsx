@@ -16,7 +16,7 @@ function Home () {
         <Nav>
             {
                 loading ? <p>Cargando...</p> :
-                <TableCardsSuperheroes listSuperheroes={superheroes} />
+                <TableCardsSuperheroes listSuperheroes={superheroes} details={true}/>
             }
             
         </Nav>

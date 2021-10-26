@@ -6,7 +6,8 @@ import store from './store';
 import './App.css';
 import Home from './components/pagehome/Home';
 import Nav from './components/navbar/Nav';
-import Favourites from './components/fav/Favourites';
+import Favourites from './components/pagefav/Favourites';
+import DetailsSuperheroe from './components/pagedetails/DetailsSuperheroe';
 
 const theme = extendTheme({
 	colors: {
@@ -32,6 +33,7 @@ function App() {
 						{/* <Route path="/trending" component={About} />
 						<Route exact path="/search" component={CoinList} /> */}
 						<Route path="/fav" component={Favourites} />
+						<Route path="/details" component={DetailsSuperheroe} />
 						{/* <Route path="*" component={NotFoundComponent} /> */}
 				</Switch>
 				</Router>
