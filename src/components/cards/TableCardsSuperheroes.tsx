@@ -9,7 +9,7 @@ const TableCardsSuperheroes = (props: any) => {
     return(
         <SimpleGrid columns={[2, null, 3]} spacing="40px">
         {listSuperheroes[0].map((superheroe: any) => {
-            return <SuperHeroeCard superheroe={superheroe} details={details} />
+            return <SuperHeroeCard key={superheroe.id} superheroe={superheroe} details={details} />
         })}
         </SimpleGrid>
     )

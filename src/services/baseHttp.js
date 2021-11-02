@@ -7,11 +7,10 @@ export const FAV_URL    = `${API_URL}fav`
 const CustomAxios = axios.create({
     baseURL: API_URL,
     headers: {
-      "Content-type": "application/json",
-      /* 'Access-Control-Allow-Origin': 'http://localhost:3000/', */
-      "access-control-allow-origin" : "*",
-
-    }
+      "Access-Control-Allow-Headers" : "Content-Type",
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Methods": "OPTIONS,POST,GET"
+  },
   });
 
   CustomAxios.interceptors.request.use(
