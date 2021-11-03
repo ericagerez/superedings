@@ -34,7 +34,7 @@ function App() {
 						<Route path="/home" component={Home} />
 						{/* <Route path="/trending" component={About} />
 						<Route exact path="/search" component={CoinList} /> */}
-						<Route path="/fav" component={Favourites} />
+						<Route path="/favourites" component={Favourites} />
 						<Route path="/details" component={DetailsSuperheroe} />
 						{/* <Route path="*" component={NotFoundComponent} /> */}
 				</Switch>

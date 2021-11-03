@@ -6,7 +6,7 @@ const superHeroesReducer = (state = initialState, action: any) => {
         case ReducerTypes.SET_ALL_SUPERHEROES:
             return {
                 ...state,
-                superheroes: [...state.superheroes, action.payload],
+                superheroes: action.payload,
                 loading: false };
         case ReducerTypes.SET_ERROR:
             return {

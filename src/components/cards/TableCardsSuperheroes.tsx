@@ -1,17 +1,43 @@
 import * as React from 'react';
 import SuperHeroeCard from './SuperHeroeCard';
-import { SimpleGrid, Box } from "@chakra-ui/react"
+import { SimpleGrid, HStack, Stack } from "@chakra-ui/react";
+import { Pagination } from "react-stitches-paginator";
+import ItemPagination from '../../components/pagination/ItemPagination';
 
 const TableCardsSuperheroes = (props: any) => {
 
     const { listSuperheroes: listSuperheroes,  details: details } = props;
+    const totalPages = Math.ceil(listSuperheroes.length / 6);
+    const itemsPerPage = 6;
+    const [page, setPage] = React.useState(1);
 
     return(
+        <>
         <SimpleGrid columns={[2, null, 3]} spacing="40px">
-        {listSuperheroes[0].map((superheroe: any) => {
-            return <SuperHeroeCard key={superheroe.id} superheroe={superheroe} details={details} />
-        })}
+            {listSuperheroes.slice((page - 1) * itemsPerPage, page * itemsPerPage).map((superheroe: any) => (
+                <SuperHeroeCard key={superheroe.id} superheroe={superheroe} details={details} />
+            ))}       
         </SimpleGrid>
+        <SimpleGrid columns={[1, 1, 1]} spacing="40px">
+            <Stack pt={10} align={'center'}>
+                <Pagination
+                    as={HStack}
+                    spacing="10px"
+                    totalPages={totalPages}
+                    currentPage={page}
+                    onPageChange={setPage}
+                    itemComponent={ItemPagination}
+                    labels={{
+                    previous: "<<",
+                    next: ">>",
+                    first: false,
+                    last: false,
+                    page: (page) => `${page}`
+                    }}
+                />
+            </Stack>
+        </SimpleGrid> 
+    </>
     )
 }
 

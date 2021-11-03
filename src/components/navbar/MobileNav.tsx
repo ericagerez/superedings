@@ -1,5 +1,6 @@
 import { IconButton, Flex, useColorModeValue, Text, FlexProps,} from '@chakra-ui/react';
 import { FiMenu, } from 'react-icons/fi';
+import styles from '../styles/theme.module.css';
 
 interface MobileProps extends FlexProps {
     onOpen: () => void;
@@ -27,7 +28,7 @@ const MobileNav = ({ onOpen, ...rest }: MobileProps) => {
               />
   
               <Text fontSize="2xl" ml="8" fontFamily="monospace" fontWeight="bold">
-                  SuperRedings
+                  Super<span className={styles.primaryColor}>Redings</span>
               </Text>
           </Flex>
       );

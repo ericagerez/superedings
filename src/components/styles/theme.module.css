@@ -1,0 +1,17 @@
+.primaryColorBg {
+    background-color: #be7adf !important;
+    color: white;
+  }
+
+.primaryColor {
+    color: #be7adf !important;
+}
+
+.primaryColorBg:hover, .hoverWhiteColor:hover {
+    color: white !important;
+}
+
+.secondaryColorBg {
+    background-color: #e9d8fd;
+    color: white;
+}

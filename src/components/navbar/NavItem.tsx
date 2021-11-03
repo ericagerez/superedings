@@ -1,6 +1,7 @@
 import { Flex, Icon, Link, FlexProps,} from '@chakra-ui/react';
 import { IconType } from 'react-icons';
 import { ReactText } from 'react';
+import styles from '../styles/theme.module.css';
 
 interface NavItemProps extends FlexProps {
     icon: IconType;
@@ -19,7 +20,7 @@ interface NavItemProps extends FlexProps {
           role="group"
           cursor="pointer"
           _hover={{
-            bg: 'brand.100',
+            bg: 'purple.100',
             color: 'black',
           }}
           {...rest}>
@@ -31,6 +32,7 @@ interface NavItemProps extends FlexProps {
                 color: 'black',
               }}
               as={icon}
+              className={styles.hoverWhiteColor}
             />
           )}
           {children}

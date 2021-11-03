@@ -10,7 +10,7 @@ export default function Nav({ children }: { children: ReactNode }) {
 
   	return (
 
-    <Box minH="100vh" bg={useColorModeValue('gray.100', 'gray.900')}>
+    <Box minH="100vh" bg={useColorModeValue('purple.100', 'gray.900')}>
 		<SidebarContent
 			onClose={() => onClose}
 			display={{ base: 'none', md: 'block' }}
