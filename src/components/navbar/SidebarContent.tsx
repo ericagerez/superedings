@@ -15,9 +15,10 @@ interface LinkItemProps {
 
 const LinkItems: Array<LinkItemProps> = [
     { name: 'Home', icon: FiHome, url: '/home' },
-    { name: 'Trending', icon: FiTrendingUp, url: '/trending' },
-    { name: 'Buscar', icon: FiSearch, url: '/search'  },
     { name: 'Favourites', icon: FiStar, url: '/favourites' },
+    { name: 'Trending', icon: FiTrendingUp, url: '/trending' },
+    { name: 'Login', icon: FiSearch, url: '/search'  },
+    
   ];
 
 interface SidebarProps extends BoxProps {

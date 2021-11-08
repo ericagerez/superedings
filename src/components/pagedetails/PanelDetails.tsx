@@ -4,6 +4,7 @@ import { ReactElement } from 'react';
 import SuperHeroeCard from '../cards/SuperHeroeCard';
 import { MdWork, MdLocationOn } from 'react-icons/md';
 import Feature from './Feature';
+import FormComment from '../forms/FormComment';
 
 const PanelDetails = (props: any) => {
 
@@ -13,6 +14,7 @@ const PanelDetails = (props: any) => {
         <Container maxW={'5xl'} py={12}>
 			<SimpleGrid columns={{ base: 1, md: 2 }} spacing={10}>
 				<Stack spacing={4}>
+					{/* Género de superheroe */}
 					<Text
 						textTransform={'uppercase'}
 						color={genero == 'Female' ? 'pink.400': 'blue.400'}
@@ -24,14 +26,14 @@ const PanelDetails = (props: any) => {
 						rounded={'md'}>
 						{genero}
 					</Text>
-					<Heading>{props.superheroe.name}
-					</Heading> 
-					
+					{/* Nombre de superheroe */}
+					<Heading>{props.superheroe.name}</Heading> 
+					{/* Trabajo de superheroe */}
 					<Stack direction={'row'} align={'center'}>
 						<MdWork/>
 						<Text color={'gray.500'} fontSize={'lg'}>{props.superheroe.work.occupation}</Text>
 					</Stack>
-
+					{/* Lugar de trabajo de superheroe */}
 					<Stack direction={'row'} align={'center'}>
 						<MdLocationOn />
 						<Text color={'gray.500'} fontSize={'lg'}>{props.superheroe.work.base}</Text>
@@ -39,16 +41,19 @@ const PanelDetails = (props: any) => {
 					
 					<Stack
 						spacing={4}
-						divider={
-						<StackDivider
-							borderColor={useColorModeValue('gray.100', 'gray.700')}
-						/>
-						}>
+						divider={ <StackDivider borderColor={useColorModeValue('gray.100', 'gray.700')}/> }
+					>
 						<Feature superheroe={props.superheroe} colorBg={'green.100'} />
 					</Stack>
 				</Stack>
 				<Flex>
 					<SuperHeroeCard superheroe={props.superheroe} details={false} />
+				</Flex>
+				
+			</SimpleGrid>
+			<SimpleGrid columns={{ base: 1, md: 1, lg: 1 }} spacing={10}>
+				<Flex>
+					<FormComment />
 				</Flex>
 			</SimpleGrid>
         </Container>

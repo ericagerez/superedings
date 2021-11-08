@@ -12,7 +12,7 @@ export const getAllSuperHeroes = () => async (dispatch: any) => {
     catch(err){
         dispatch( {
             type: ReducerTypes.SET_ERROR,
-            payload: console.log(err),
+            payload: console.log(err), //TODO: modal por error
         })
         console.log(err);
     }
