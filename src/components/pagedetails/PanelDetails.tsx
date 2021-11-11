@@ -1,4 +1,4 @@
-import { Container, SimpleGrid, Image, Flex, Heading, Text, Stack, StackDivider, Icon, useColorModeValue, } from '@chakra-ui/react';
+import { Container, SimpleGrid, Image, Flex, Heading, Text, Stack, StackDivider, Icon, useColorModeValue,Center, Grid, GridItem, Box  } from '@chakra-ui/react';
 import { IoAnalyticsSharp, IoLogoBitcoin, IoSearchSharp, } from 'react-icons/io5';
 import { ReactElement } from 'react';
 import SuperHeroeCard from '../cards/SuperHeroeCard';
@@ -11,52 +11,51 @@ const PanelDetails = (props: any) => {
     const genero = props.superheroe.appearance.gender;
 
     return (
-        <Container maxW={'5xl'} py={12}>
-			<SimpleGrid columns={{ base: 1, md: 2 }} spacing={10}>
-				<Stack spacing={4}>
-					{/* Género de superheroe */}
-					<Text
-						textTransform={'uppercase'}
-						color={genero == 'Female' ? 'pink.400': 'blue.400'}
-						fontWeight={600}
-						fontSize={'sm'}
-						bg={useColorModeValue('blue.50', 'blue.900')}
-						p={2}
-						alignSelf={'flex-start'}
-						rounded={'md'}>
-						{genero}
-					</Text>
-					{/* Nombre de superheroe */}
-					<Heading>{props.superheroe.name}</Heading> 
-					{/* Trabajo de superheroe */}
-					<Stack direction={'row'} align={'center'}>
-						<MdWork/>
-						<Text color={'gray.500'} fontSize={'lg'}>{props.superheroe.work.occupation}</Text>
-					</Stack>
-					{/* Lugar de trabajo de superheroe */}
-					<Stack direction={'row'} align={'center'}>
-						<MdLocationOn />
-						<Text color={'gray.500'} fontSize={'lg'}>{props.superheroe.work.base}</Text>
-					</Stack>
-					
-					<Stack
-						spacing={4}
-						divider={ <StackDivider borderColor={useColorModeValue('gray.100', 'gray.700')}/> }
-					>
-						<Feature superheroe={props.superheroe} colorBg={'green.100'} />
-					</Stack>
-				</Stack>
-				<Flex>
-					<SuperHeroeCard superheroe={props.superheroe} details={false} />
+		<Container bg="" maxW="full" mt={0} centerContent overflow="hidden">
+			<Flex direction='column' maxW="full">
+				<Flex direction={['column','column','column','row']}>
+					<Box width={["100%", "100%", "100%", "60%"]} colums={[1]}>
+						<Stack spacing={4}>
+							{/* Género de superheroe */}
+							<Text
+								textTransform={'uppercase'}
+								color={genero == 'Female' ? 'pink.400': 'blue.400'}
+								fontWeight={600}
+								fontSize={'sm'}
+								bg={useColorModeValue('blue.50', 'blue.900')}
+								p={2}
+								alignSelf={'flex-start'}
+								rounded={'md'}>
+								{genero}
+							</Text>
+							{/* Nombre de superheroe */}
+							<Heading>{props.superheroe.name}</Heading> 
+							{/* Trabajo de superheroe */}
+							<Stack direction={'row'} align={'center'}>
+								<MdWork/>
+								<Text color={'gray.500'} fontSize={'lg'}>{props.superheroe.work.occupation}</Text>
+							</Stack>
+							{/* Lugar de trabajo de superheroe */}
+							<Stack direction={'row'} align={'center'}>
+								<MdLocationOn />
+								<Text color={'gray.500'} fontSize={'lg'}>{props.superheroe.work.base}</Text>
+							</Stack>
+							
+							<Box mt={3}>
+								<Feature superheroe={props.superheroe} colorBg={'green.100'} />
+							</Box>
+						</Stack>				
+					</Box >
+					<Box width={["100%", "100%", "100%", "40%"]} >
+						<SuperHeroeCard superheroe={props.superheroe} details={false} />
+					</Box>
 				</Flex>
-				
-			</SimpleGrid>
-			<SimpleGrid columns={{ base: 1, md: 1, lg: 1 }} spacing={10}>
-				<Flex>
+				<Box width={"100%"}>
 					<FormComment />
-				</Flex>
-			</SimpleGrid>
-        </Container>
+				</Box>
+        	</Flex>
+		</Container>
+        
       );
 }
 
