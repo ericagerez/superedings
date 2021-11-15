@@ -13,6 +13,7 @@ import {
 import { useState } from 'react';
 import * as Yup from "yup";
 import useFirebase from '../../firebase/useFirebase';
+import SectionComments from "./SectionComments";
   
   export default function FormComment() {
 
@@ -106,8 +107,15 @@ import useFirebase from '../../firebase/useFirebase';
 									</FormControl>
 								</VStack>{/*  )} */}
 								</Formik>
+
+								
 							</Box>
-							{/* {console.log(documents)} */}
+							<Box bg="#be7adf" borderRadius="lg" m={8} color="#0B0E3F"  p={{ sm: 5, md: 5, lg: 8 }} >
+								<SectionComments />
+							</Box>
+							
+							{/* {console.log(documents)} */} 
+							
 						</Box>
 				</Flex>
 			</Container>

@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 import { db } from './firebaseConfig';
-import ModalActions from '../components/modals/ModalActions';
 
 const useFirebase = (collection: string) => {
 
