@@ -10,13 +10,32 @@ import {
     Select
   } from '@chakra-ui/react';
   import { Formik } from "formik";
-  import * as Yup from "yup";
+import { useState } from 'react';
+import * as Yup from "yup";
+import useFirebase from '../../firebase/useFirebase';
   
-  export default function contact() {
+  export default function FormComment() {
 
-	const onSubmit = (values: any) => {
-		console.log(values);
-	  };
+	let [comment, setComment] = useState("");
+	let [calification, setCalification] = useState("");
+	let [mailUser, setMailUser] = useState("erica.gerez@gmail.com") //TODO: obtener el mail del usuario logueado dinamicamente
+	const { save, documents } = useFirebase("comentarios")
+
+	const resetData = () => {
+		setComment("");
+		setCalification("");
+	}
+
+	const onSubmit = () => {
+		let saveComment = {
+			comment: comment,
+			calification: calification,
+			user: mailUser
+		}
+		save(saveComment).then(()=>{
+			resetData();
+		});	
+	};
 	  
 	  const initialValues = {
 		comentario: "",
@@ -25,7 +44,14 @@ import {
 		comentario: Yup.string().required(),
 	  });
 
+	const handleTextArea = (event: any) => {
+		setComment(event.target.value);
+	}
 
+	const handleCalification = (event: any) => {
+		setCalification(event.target.value);
+	}
+	   
     return (
 			<Container maxW="full" mt={0} overflow="hidden">
 				<Flex maxW="full">
@@ -46,8 +72,8 @@ import {
 								<VStack spacing={5} as="form"
 								/* onSubmit={handleSubmit as any} */>
 									<FormControl id="puntuacion">
-									<FormLabel>Puntuación</FormLabel>
-									<Select variant="flushed" placeholder="Seleccionar" >
+									<FormLabel>Puntuación</FormLabel>	
+									<Select variant="flushed" placeholder="Seleccionar" onChange={handleCalification} value={calification}>
 										<option value="1">★</option>
 										<option value="2">★★</option>
 										<option value="3">★★★</option>
@@ -64,6 +90,8 @@ import {
 										}}
 										placeholder="¿Es este tu superhéroe favorito?"
 										name="comentario"
+										value={comment}
+										onChange={handleTextArea}
 									/>
 									</FormControl>
 									<FormControl id="name" float="right">
@@ -79,6 +107,7 @@ import {
 								</VStack>{/*  )} */}
 								</Formik>
 							</Box>
+							{/* {console.log(documents)} */}
 						</Box>
 				</Flex>
 			</Container>

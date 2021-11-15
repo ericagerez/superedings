@@ -53,6 +53,9 @@ const PanelDetails = (props: any) => {
 				<Box width={"100%"}>
 					<FormComment />
 				</Box>
+				<Box width={"100%"}>
+					
+				</Box>
         	</Flex>
 		</Container>
         
