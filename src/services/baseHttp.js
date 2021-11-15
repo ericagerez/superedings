@@ -1,17 +1,13 @@
 import axios from 'axios';
 
-export const API_URL     = "https://superheroapi.com/api/4262740897171885/"
-export const HOME_URL = `${API_URL}home`
-export const FAV_URL    = `${API_URL}fav`
+export const API_URL = "https://6190524df6bf450017484bc8.mockapi.io/superedings/"
+export const HOME_URL = `/home`
+export const FAV_URL    = `/fav`
 
 const CustomAxios = axios.create({
     baseURL: API_URL,
-    headers: {
-      "Access-Control-Allow-Headers" : "Content-Type",
-      "Access-Control-Allow-Origin": "*",
-      "Access-Control-Allow-Methods": "OPTIONS,POST,GET"
-  },
   });
+
 
   CustomAxios.interceptors.request.use(
     function (config) {
