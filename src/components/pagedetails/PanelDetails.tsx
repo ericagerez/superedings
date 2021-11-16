@@ -1,10 +1,10 @@
-import { Container, SimpleGrid, Image, Flex, Heading, Text, Stack, StackDivider, Icon, useColorModeValue,Center, Grid, GridItem, Box  } from '@chakra-ui/react';
-import { IoAnalyticsSharp, IoLogoBitcoin, IoSearchSharp, } from 'react-icons/io5';
+import { Container, SimpleGrid, Image, Flex, Heading, Text, Stack, StackDivider, Icon, useColorModeValue,Center, Grid, GridItem, Box, chakra  } from '@chakra-ui/react';
 import { ReactElement } from 'react';
 import SuperHeroeCard from '../cards/SuperHeroeCard';
 import { MdWork, MdLocationOn } from 'react-icons/md';
 import Feature from './Feature';
 import FormComment from '../forms/FormComment';
+import SectionComments from '../forms/SectionComments';
 
 const PanelDetails = (props: any) => {
 
@@ -53,8 +53,11 @@ const PanelDetails = (props: any) => {
 				<Box width={"100%"}>
 					<FormComment />
 				</Box>
-				<Box width={"100%"}>
-					
+				<Heading as="h3" size="lg" textAlign="center">
+     	 			Comentarios acerca de <chakra.p color={'#be7adf'}>{props.superheroe.name}</chakra.p>
+    			</Heading>
+				<Box width={"77%"} m={"auto"}>
+					<SectionComments />
 				</Box>
         	</Flex>
 		</Container>
