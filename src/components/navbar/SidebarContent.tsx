@@ -1,11 +1,8 @@
-import React, { ReactNode } from 'react';
-import { IconButton, Box, CloseButton, Flex, Icon, useColorModeValue, Button, Link, Drawer, DrawerContent, Text, useDisclosure, BoxProps, FlexProps,} from '@chakra-ui/react';
-import { FiHome, FiTrendingUp, FiSearch, FiStar, FiSettings, FiMenu, } from 'react-icons/fi';
+import { Box, CloseButton, Flex, useColorModeValue, Button, Text, BoxProps,} from '@chakra-ui/react';
+import { FiHome } from 'react-icons/fi';
 import { MdLogin } from 'react-icons/md';
 import { BiLogOut } from 'react-icons/bi'
 import { IconType } from 'react-icons';
-import { ReactText } from 'react';
-import MobileNav from './MobileNav';
 import NavItem from './NavItem';
 import styles from '../styles/theme.module.css';
 import { useDispatch, useSelector } from 'react-redux';
@@ -20,9 +17,6 @@ interface LinkItemProps {
 
 const LinkItems: Array<LinkItemProps> = [
     { name: 'Home', icon: FiHome, url: '/home' },
-    /* { name: 'Favourites', icon: FiStar, url: '/favourites' }, 
-    { name: 'Login', icon: MdLogin, url: '/login'  },
-    { name: 'Logout', icon: BiLogOut, url: '#'  }, */
   ];
 
 interface SidebarProps extends BoxProps {

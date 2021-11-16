@@ -1,4 +1,4 @@
-import { Alert, AlertIcon, AlertTitle, AlertDescription, CloseButton } from "@chakra-ui/react"
+import { Alert, AlertIcon } from "@chakra-ui/react"
 
 const AlertTemplate = () => {
     return(

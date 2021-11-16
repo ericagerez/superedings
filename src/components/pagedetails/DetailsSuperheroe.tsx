@@ -1,13 +1,13 @@
 import Nav from '../navbar/Nav';
-import SuperHeroeCard from '../cards/SuperHeroeCard';
 import PanelDetails from '../pagedetails/PanelDetails';
+import { Center } from '@chakra-ui/layout';
 
 const DetailsSuperheroe = (props: any) => {
     return(
         <Nav>
             { props.location.state ?  
                                     <PanelDetails superheroe={props.location.state.superheroe}/> : 
-                                    <p>Para ver los detalles de un superheroe por favor seleccionar uno en la home</p>
+                                    <Center>Para ver los detalles de un superheroe por favor seleccioe uno en la home</Center>
             }
             
         </Nav>

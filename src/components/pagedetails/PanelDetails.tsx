@@ -1,4 +1,4 @@
-import { Container, SimpleGrid, Image, Flex, Heading, Text, Stack, Button, Link, useColorModeValue,Center, Grid, GridItem, Box, chakra  } from '@chakra-ui/react';
+import { Container, Flex, Heading, Text, Stack, Link, useColorModeValue, Box, chakra  } from '@chakra-ui/react';
 import SuperHeroeCard from '../cards/SuperHeroeCard';
 import { MdWork, MdLocationOn } from 'react-icons/md';
 import Feature from './Feature';
@@ -6,14 +6,12 @@ import FormComment from '../forms/FormComment';
 import SectionComments from '../forms/SectionComments';
 import { useDispatch, useSelector } from 'react-redux';
 import { login } from '../../actions/loginAction';
-import AlertTemplate from '../modals/AlertTemplate';
 
 const PanelDetails = (props: any) => {
 
     const genero = props.superheroe.appearance.gender;
 	const dispatch = useDispatch();
 	let {user} = useSelector((state: any) => state.loginReducer);
-	let {openModal} = useSelector((state: any) => state.modalReducer);
 
 	const handleLinkLogin = () => {
 		dispatch(login());
@@ -21,7 +19,7 @@ const PanelDetails = (props: any) => {
 
     return (
 		<Container bg="" maxW="full" mt={0} centerContent overflow="hidden">
-			{openModal && <AlertTemplate />}
+			
 			<Flex direction='column' maxW="full">
 				<Flex direction={['column','column','column','row']}>
 					<Box width={["100%", "100%", "100%", "60%"]} colums={[1]}>

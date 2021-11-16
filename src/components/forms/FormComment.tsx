@@ -1,15 +1,9 @@
-import { Container, Flex, Box, Button, VStack, FormControl, FormLabel, Textarea, Select, ButtonGroup } from '@chakra-ui/react';
-import { Formik, Form, Field  } from "formik";
-import { useState } from 'react';
+import { Container, Box, FormLabel, ButtonGroup } from '@chakra-ui/react';
+import { Formik  } from "formik";
 import * as Yup from "yup";
 import useFirebase from '../../firebase/useFirebase';
 import AlertTemplate from '../../components/modals/AlertTemplate';
-
-import {
-	SelectControl,
-	SubmitButton,
-	TextareaControl
-  } from "formik-chakra-ui";
+import { SelectControl, SubmitButton, TextareaControl } from "formik-chakra-ui";
 import { useSelector } from 'react-redux';
   
   export default function FormComment() {

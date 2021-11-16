@@ -1,6 +1,5 @@
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'recharts';
 
-
 interface FeatureProps {
     superheroe: any;
     colorBg: string;
@@ -26,7 +25,7 @@ const buildListPowerColor = (poderes: any) => {
 }
 
 
-const Feature = ({ superheroe, colorBg }: FeatureProps) => {
+const Feature = ({ superheroe }: FeatureProps) => {
   	
 	const data2 = buildData(superheroe);
 	const listPowersColors = buildListPowerColor(superheroe.powerstats);

@@ -7,7 +7,6 @@ const ItemPagination = (props: any) => {
       <ChakraProvider>
         <Button
           variant={props.isActive ? "solid" : "outline"}
-          //colorScheme={props.isActive ? "pink" : "purple"}
           isDisabled={props.isDisabled}
           onClick={props.onClick}
           className={props.isActive ? styles.activeButton : styles.notActiveButton}

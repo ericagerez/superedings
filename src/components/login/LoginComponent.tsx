@@ -1,4 +1,4 @@
-import { Button, Flex, Heading, Stack, Text, useColorModeValue, Center } from '@chakra-ui/react';
+import { Button, Heading, Stack, Text, useColorModeValue, Center } from '@chakra-ui/react';
 import { FcGoogle } from 'react-icons/fc';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router';
