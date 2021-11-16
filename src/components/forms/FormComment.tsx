@@ -1,122 +1,76 @@
-import {
-    Container,
-    Flex,
-    Box,
-    Button,
-    VStack,
-    FormControl,
-    FormLabel,
-    Textarea,
-    Select
-  } from '@chakra-ui/react';
-  import { Formik } from "formik";
+import { Container, Flex, Box, Button, VStack, FormControl, FormLabel, Textarea, Select, ButtonGroup } from '@chakra-ui/react';
+import { Formik, Form, Field  } from "formik";
 import { useState } from 'react';
 import * as Yup from "yup";
 import useFirebase from '../../firebase/useFirebase';
-import SectionComments from "./SectionComments";
+
+import {
+	SelectControl,
+	SubmitButton,
+	TextareaControl
+  } from "formik-chakra-ui";
   
   export default function FormComment() {
 
-	let [comment, setComment] = useState("");
-	let [calification, setCalification] = useState("");
 	let [mailUser, setMailUser] = useState("erica.gerez@gmail.com") //TODO: obtener el mail del usuario logueado dinamicamente
 	const { save, documents } = useFirebase("comentarios")
-
-	const resetData = () => {
-		setComment("");
-		setCalification("");
-	}
-
-	const onSubmit = () => {
-		let saveComment = {
-			comment: comment,
-			calification: calification,
-			user: mailUser
-		}
-		save(saveComment).then(()=>{
-			resetData();
-		});	
-	};
 	  
-	  const initialValues = {
-		comentario: "",
+	   const initialValues = {
+		comment: "",
+		calification: "",
+		user: mailUser
 	  };
-	  const validationSchema = Yup.object({
-		comentario: Yup.string().required(),
+
+	  const validationComment = Yup.object().shape({
+		comment: Yup.string()
+				.min(3, 'Comentario demasiado corto')
+				.max(200, 'Comentario demasiado largo')
+				.required('Este campo es requerido'),
+		calification: Yup.string().required('Este campo es requerido'),
 	  });
-
-	const handleTextArea = (event: any) => {
-		setComment(event.target.value);
-	}
-
-	const handleCalification = (event: any) => {
-		setCalification(event.target.value);
-	}
 	   
     return (
-			<Container maxW="full" mt={0} overflow="hidden">
-				<Flex maxW="full">
-					<Box
-					bg="#be7adf"
-					color="white"
-					borderRadius="lg"
-					m={{ sm: 4, md: 16, lg: 10 }}
-					width={"100%"}
+		<Container maxW="full" mt={0} overflow="hidden">
+			<Formik
+				initialValues={initialValues}
+				onSubmit={(values, actions) => {
+					actions.resetForm();
+					save(values);
+					alert(JSON.stringify(values, null, 2));
+					actions.setSubmitting(false);
+				}}
+				validationSchema={validationComment}
+			>
+			{({ handleSubmit }) => (
+				<Box
+					borderWidth="1px"
+					rounded="lg"
+					shadow="1px 1px 3px rgba(0,0,0,0.3)"
+					maxWidth={800}
+					p={6}
+					m="10px auto"
+					as="form"
+					onSubmit={handleSubmit as any}
+					bg="white"
+				>	
+					<FormLabel>Puntuación</FormLabel>		
+					<SelectControl
+						name="calification"
+						selectProps={{ placeholder: "Seleccionar" }}
 					>
-						<Box bg="white" borderRadius="lg" m={8} color="#0B0E3F"  p={{ sm: 5, md: 5, lg: 8 }} >
-							<Formik
-								initialValues={initialValues}
-								onSubmit={onSubmit}
-								validationSchema={validationSchema}
-							>
-								{/* {({ handleSubmit, values, errors }) => ( */}
-								<VStack spacing={5} as="form"
-								/* onSubmit={handleSubmit as any} */>
-									<FormControl id="puntuacion">
-									<FormLabel>Puntuación</FormLabel>	
-									<Select variant="flushed" placeholder="Seleccionar" onChange={handleCalification} value={calification}>
-										<option value="1">★</option>
-										<option value="2">★★</option>
-										<option value="3">★★★</option>
-										<option value="4">★★★★</option>
-										<option value="4">★★★★★</option>
-									</Select>
-									</FormControl>
-									<FormControl id="name">
-									<FormLabel>Comentario</FormLabel>
-									<Textarea
-										borderColor="gray.300"
-										_hover={{
-										borderRadius: 'gray.300',
-										}}
-										placeholder="¿Es este tu superhéroe favorito?"
-										name="comentario"
-										value={comment}
-										onChange={handleTextArea}
-									/>
-									</FormControl>
-									<FormControl id="name" float="right">
-									<Button
-										variant="solid"
-										bg="#e9d8fd"
-										color="black"
-										_hover={{}}
-										onClick={onSubmit}>
-										Enviar
-									</Button>
-									</FormControl>
-								</VStack>{/*  )} */}
-								</Formik>
-
-								
-							</Box>
-							<Box bg="#be7adf" borderRadius="lg" m={8} color="#0B0E3F"  p={{ sm: 5, md: 5, lg: 8 }} >
-								<SectionComments />
-							</Box>
-							
-							{/* {console.log(documents)} */} 
-							
-						</Box>
-				</Flex>
-			</Container>
+						<option value="1">★</option>
+						<option value="2">★★</option>
+						<option value="3">★★★</option>
+						<option value="4">★★★★</option>
+						<option value="4">★★★★★</option>
+					</SelectControl>
+					<TextareaControl name="comment" label="Comentario" m="30px auto" />
+					<ButtonGroup>
+						<SubmitButton bg="#be7adf" color="white" _hover={{}}>Enviar</SubmitButton>
+					</ButtonGroup>
+				</Box>
+			)}
+			</Formik>
+  
+		</Container>
 );}
