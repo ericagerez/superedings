@@ -3,7 +3,7 @@ import Nav from '../navbar/Nav';
 import { useSelector, useDispatch } from 'react-redux';
 import TableCardsSuperheroes from '../cards/TableCardsSuperheroes';
 import { getAllSuperHeroes } from '../../actions/superHeroesActions';
-
+import { Spinner, Center } from "@chakra-ui/react"
 
 function Home () {
 
@@ -23,7 +23,7 @@ function Home () {
     return (
         <Nav>
             {
-                loading ? <p>Cargando...</p> :
+                loading ? <Center><Spinner size="xl" /></Center> :
                 <TableCardsSuperheroes listSuperheroes={superheroes} details={true}/>
             }
             
