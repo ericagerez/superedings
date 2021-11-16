@@ -17,7 +17,7 @@ const LinkItems: Array<LinkItemProps> = [
     { name: 'Home', icon: FiHome, url: '/home' },
     { name: 'Favourites', icon: FiStar, url: '/favourites' },
     { name: 'Trending', icon: FiTrendingUp, url: '/trending' },
-    { name: 'Login', icon: FiSearch, url: '/search'  },
+    { name: 'Login', icon: FiSearch, url: '/login'  },
     
   ];
 

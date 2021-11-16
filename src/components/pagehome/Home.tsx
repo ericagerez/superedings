@@ -8,9 +8,17 @@ import { getAllSuperHeroes } from '../../actions/superHeroesActions';
 function Home () {
 
     const dispatch: any = useDispatch();
-    const {superheroes, loading} = useSelector((state: any) => state.superHeroesReducer);
+    let {superheroes, loading} = useSelector((state: any) => state.superHeroesReducer);
+    let {user} = useSelector((state: any) => state.loginReducer);
 
-    useEffect(() => {  dispatch(getAllSuperHeroes()) }, [])
+    const initilization = () => {
+        console.log(user);
+    }
+
+    useEffect(() => {  
+       dispatch(getAllSuperHeroes()) 
+       initilization();
+    }, [])
 
     return (
         <Nav>

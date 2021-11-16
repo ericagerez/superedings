@@ -1,7 +1,20 @@
 import { Button, Flex, Heading, Stack, Text, useColorModeValue, Center } from '@chakra-ui/react';
 import { FcGoogle } from 'react-icons/fc';
+import { useDispatch } from 'react-redux';
+import { useHistory } from 'react-router';
+import { login } from '../../actions/loginAction';
+
 
 export default function LoginComponent() {
+
+	const dispatch = useDispatch();
+	const history = useHistory();
+
+	const loginUser = () => {
+		dispatch(login());
+		history.push("/home")
+	}
+
   return (
 	<Flex
 		minH={'100vh'}
@@ -28,7 +41,7 @@ export default function LoginComponent() {
 				<Center>Inicie sesión con sus credenciales de google</Center>
 			</Text>
 			<Stack spacing={6}>
-				<Button w={'full'} variant={'outline'} leftIcon={<FcGoogle />} /* onClick={()=>loginGoogle()} */>
+				<Button w={'full'} variant={'outline'} leftIcon={<FcGoogle />} onClick={()=>loginUser()}>
 					<Center>
 						<Text>Iniciar sesion con Google</Text>
 					</Center>

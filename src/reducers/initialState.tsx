@@ -1,13 +1,15 @@
 export interface State {
-    superheroes: Array<object>;
+    superheroes: Array<{}>;
     loading: boolean;
     errorMessage: string;
+    user: string
 } 
 
 const initialState: State = {
     superheroes: [],
     loading: true,
-    errorMessage: "" 
+    errorMessage: "",
+    user: '',
 }
 
 export default initialState;

@@ -9,16 +9,17 @@ import {
 	SubmitButton,
 	TextareaControl
   } from "formik-chakra-ui";
+import { useSelector } from 'react-redux';
   
   export default function FormComment() {
 
-	let [mailUser, setMailUser] = useState("erica.gerez@gmail.com") //TODO: obtener el mail del usuario logueado dinamicamente
-	const { save, documents } = useFirebase("comentarios")
+	const { save } = useFirebase("comentarios")
+	let {user} = useSelector((state: any) => state.loginReducer);
 	  
 	   const initialValues = {
 		comment: "",
 		calification: "",
-		user: mailUser
+		user: user?.mail
 	  };
 
 	  const validationComment = Yup.object().shape({

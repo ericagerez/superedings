@@ -30,7 +30,7 @@ function App() {
 				<Router>
 					{/* <Nav /> */}
 					<Switch>
-						<Route path="/home" component={Home} />
+						<Route exact path="/home" component={Home} />
 						{/* <Route path="/trending" component={About} />
 						<Route exact path="/search" component={CoinList} /> */}
 						<Route path="/favourites" component={Favourites} />

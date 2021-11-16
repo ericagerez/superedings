@@ -1,14 +1,15 @@
 import { Container, SimpleGrid, Image, Flex, Heading, Text, Stack, StackDivider, Icon, useColorModeValue,Center, Grid, GridItem, Box, chakra  } from '@chakra-ui/react';
-import { ReactElement } from 'react';
 import SuperHeroeCard from '../cards/SuperHeroeCard';
 import { MdWork, MdLocationOn } from 'react-icons/md';
 import Feature from './Feature';
 import FormComment from '../forms/FormComment';
 import SectionComments from '../forms/SectionComments';
+import { useSelector } from 'react-redux';
 
 const PanelDetails = (props: any) => {
 
     const genero = props.superheroe.appearance.gender;
+	let {user} = useSelector((state: any) => state.loginReducer);
 
     return (
 		<Container bg="" maxW="full" mt={0} centerContent overflow="hidden">
@@ -50,15 +51,26 @@ const PanelDetails = (props: any) => {
 						<SuperHeroeCard superheroe={props.superheroe} details={false} />
 					</Box>
 				</Flex>
-				<Box width={"100%"}>
-					<FormComment />
-				</Box>
-				<Heading as="h3" size="lg" textAlign="center">
-     	 			Comentarios acerca de <chakra.p color={'#be7adf'}>{props.superheroe.name}</chakra.p>
-    			</Heading>
+				{
+					user ?
+						<Box width={"100%"}>
+							<FormComment />
+						</Box>:
+						<Heading as="h3" size="lg" textAlign="center" m='15px'>
+							Para escribir un comentario acerca de <chakra.p color={'#be7adf'}>{props.superheroe.name}</chakra.p> 
+							por favor inicia sesión.
+				  		</Heading>
+				}
+						
 				<Box width={"77%"} m={"auto"}>
 					<SectionComments />
 				</Box>
+							
+						
+						
+
+				
+				
         	</Flex>
 		</Container>
         
