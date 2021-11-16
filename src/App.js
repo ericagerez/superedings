@@ -8,18 +8,17 @@ import Home from './components/pagehome/Home';
 import Nav from './components/navbar/Nav';
 import Favourites from './components/pagefav/Favourites';
 import DetailsSuperheroe from './components/pagedetails/DetailsSuperheroe';
+import LoginComponent from './components/login/LoginComponent';
 
 const theme = extendTheme({
 	colors: {
 	  brand: {
 		100: "#EDF2F7",
-		// ...
 		900: "#1a202c",
 	  },
 	},
   })
 
-  
 
 function App() {
 
@@ -36,6 +35,7 @@ function App() {
 						<Route exact path="/search" component={CoinList} /> */}
 						<Route path="/favourites" component={Favourites} />
 						<Route path="/details" component={DetailsSuperheroe} />
+						<Route path="/login" component={LoginComponent} />
 						{/* <Route path="*" component={NotFoundComponent} /> */}
 				</Switch>
 				</Router>
