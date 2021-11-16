@@ -1,9 +1,12 @@
 import { useEffect, useState } from 'react';
 import { db } from './firebaseConfig';
+import {setOpenModal} from '../actions/modalActions';
+import { useDispatch } from 'react-redux';
 
 const useFirebase = (collection: string) => {
 
     const [firebaseDocuments, setFirebaseDocuments] = useState<Array<any>>([]);
+    const dispatch = useDispatch();
 
     useEffect(() => {
         getAll();
@@ -11,7 +14,8 @@ const useFirebase = (collection: string) => {
 
     const save = (values: any) => {
         return db.collection(collection).doc().set(values).then(() => {
-            alert("Guardado correctamente.")
+            dispatch(setOpenModal(true));
+            setTimeout(function(){  dispatch(setOpenModal(false));; }, 3000);
         }).catch(() =>{
             alert("Lo sentimos, hubo un error al guardar.")
         });

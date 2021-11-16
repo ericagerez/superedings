@@ -2,7 +2,8 @@ export interface State {
     superheroes: Array<{}>;
     loading: boolean;
     errorMessage: string;
-    user: string
+    user: string,
+    openModal: boolean
 } 
 
 const initialState: State = {
@@ -10,6 +11,7 @@ const initialState: State = {
     loading: true,
     errorMessage: "",
     user: '',
+    openModal: false
 }
 
 export default initialState;

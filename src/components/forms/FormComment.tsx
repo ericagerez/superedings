@@ -3,6 +3,7 @@ import { Formik, Form, Field  } from "formik";
 import { useState } from 'react';
 import * as Yup from "yup";
 import useFirebase from '../../firebase/useFirebase';
+import AlertTemplate from '../../components/modals/AlertTemplate';
 
 import {
 	SelectControl,
@@ -15,6 +16,7 @@ import { useSelector } from 'react-redux';
 
 	const { save } = useFirebase("comentarios")
 	let {user} = useSelector((state: any) => state.loginReducer);
+	let {openModal} = useSelector((state: any) => state.modalReducer);
 	  
 	   const initialValues = {
 		comment: "",
@@ -32,12 +34,12 @@ import { useSelector } from 'react-redux';
 	   
     return (
 		<Container maxW="full" mt={0} overflow="hidden">
+			
 			<Formik
 				initialValues={initialValues}
 				onSubmit={(values, actions) => {
 					actions.resetForm();
 					save(values);
-					alert(JSON.stringify(values, null, 2));
 					actions.setSubmitting(false);
 				}}
 				validationSchema={validationComment}
@@ -54,6 +56,7 @@ import { useSelector } from 'react-redux';
 					onSubmit={handleSubmit as any}
 					bg="white"
 				>	
+					{openModal && <AlertTemplate />}
 					<FormLabel>Puntuación</FormLabel>		
 					<SelectControl
 						name="calification"
@@ -72,6 +75,6 @@ import { useSelector } from 'react-redux';
 				</Box>
 			)}
 			</Formik>
-  
+				
 		</Container>
 );}
