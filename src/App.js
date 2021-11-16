@@ -1,11 +1,10 @@
-import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import { ChakraProvider } from "@chakra-ui/react";
 import { extendTheme } from "@chakra-ui/react"
 import { Provider } from 'react-redux';
 import store from './store';
 import './App.css';
 import Home from './components/pagehome/Home';
-import Nav from './components/navbar/Nav';
 import Favourites from './components/pagefav/Favourites';
 import DetailsSuperheroe from './components/pagedetails/DetailsSuperheroe';
 import LoginComponent from './components/login/LoginComponent';
@@ -28,15 +27,11 @@ function App() {
 		<Provider store={store}>
 			<ChakraProvider theme={theme}>
 				<Router>
-					{/* <Nav /> */}
 					<Switch>
-						<Route exact path="/home" component={Home} />
-						{/* <Route path="/trending" component={About} />
-						<Route exact path="/search" component={CoinList} /> */}
 						<Route path="/favourites" component={Favourites} />
 						<Route path="/details" component={DetailsSuperheroe} />
 						<Route path="/login" component={LoginComponent} />
-						{/* <Route path="*" component={NotFoundComponent} /> */}
+						<Route path="/" component={Home} />
 				</Switch>
 				</Router>
 			</ChakraProvider>

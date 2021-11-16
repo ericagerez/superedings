@@ -12,7 +12,7 @@ export default function LoginComponent() {
 
 	const loginUser = () => {
 		dispatch(login());
-		history.push("/home")
+		history.push("/")
 	}
 
   return (
