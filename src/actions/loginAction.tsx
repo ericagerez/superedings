@@ -21,5 +21,11 @@ export const login = () => async (dispatch: any) => {
         })
         console.log(error);
     } 
+}
+
+export const logout = () => async (dispatch: any) => {
+    dispatch({ 
+            type: ReducerTypes.LOGOUT_USER, 
+        });
 
 }

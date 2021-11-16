@@ -3,7 +3,7 @@ import { FcGoogle } from 'react-icons/fc';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router';
 import { login } from '../../actions/loginAction';
-
+import Nav from '../../components/navbar/Nav';
 
 export default function LoginComponent() {
 
@@ -16,12 +16,7 @@ export default function LoginComponent() {
 	}
 
   return (
-	<Flex
-		minH={'100vh'}
-		align={'center'}
-		justify={'center'}
-		bg={useColorModeValue('gray.50', 'gray.800')}
-	>
+	<Nav>
 		<Stack
 			spacing={4}
 			w={'full'}
@@ -31,6 +26,8 @@ export default function LoginComponent() {
 			boxShadow={'lg'}
 			p={6}
 			my={12}
+			m={'90px auto'}
+			justify={'center'}
 		>
 			<Heading lineHeight={1.1} fontSize={{ base: '2xl', md: '3xl' }} >
 				<Center> Iniciar sesión</Center>
@@ -48,6 +45,6 @@ export default function LoginComponent() {
 				</Button>
 			</Stack>
 		</Stack>
-	</Flex>
+	</Nav>
   );
 }

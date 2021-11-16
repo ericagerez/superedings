@@ -1,11 +1,16 @@
 import React, { ReactNode } from 'react';
-import { IconButton, Box, CloseButton, Flex, Icon, useColorModeValue, Link, Drawer, DrawerContent, Text, useDisclosure, BoxProps, FlexProps,} from '@chakra-ui/react';
+import { IconButton, Box, CloseButton, Flex, Icon, useColorModeValue, Button, Link, Drawer, DrawerContent, Text, useDisclosure, BoxProps, FlexProps,} from '@chakra-ui/react';
 import { FiHome, FiTrendingUp, FiSearch, FiStar, FiSettings, FiMenu, } from 'react-icons/fi';
+import { MdLogin } from 'react-icons/md';
+import { BiLogOut } from 'react-icons/bi'
 import { IconType } from 'react-icons';
 import { ReactText } from 'react';
 import MobileNav from './MobileNav';
 import NavItem from './NavItem';
 import styles from '../styles/theme.module.css';
+import { useDispatch, useSelector } from 'react-redux';
+import { logout } from '../../actions/loginAction';
+import { useHistory } from 'react-router';
 
 interface LinkItemProps {
     name: string;
@@ -15,10 +20,9 @@ interface LinkItemProps {
 
 const LinkItems: Array<LinkItemProps> = [
     { name: 'Home', icon: FiHome, url: '/home' },
-    { name: 'Favourites', icon: FiStar, url: '/favourites' },
-    { name: 'Trending', icon: FiTrendingUp, url: '/trending' },
-    { name: 'Login', icon: FiSearch, url: '/login'  },
-    
+    /* { name: 'Favourites', icon: FiStar, url: '/favourites' }, 
+    { name: 'Login', icon: MdLogin, url: '/login'  },
+    { name: 'Logout', icon: BiLogOut, url: '#'  }, */
   ];
 
 interface SidebarProps extends BoxProps {
@@ -30,26 +34,45 @@ interface SidebarProps extends BoxProps {
   }
   
   const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
-      return (
+
+	const dispatch = useDispatch();
+	let history = useHistory();
+    let {user} = useSelector((state: any) => state.loginReducer);
+
+	const handleOnClik = () => {
+		user ? dispatch(logout()) : history.push('/login');
+	}
+
+    return (
           <Box
-              bg={useColorModeValue('white', 'gray.900')}
-              borderRight="1px"
-              borderRightColor={useColorModeValue('gray.200', 'gray.700')}
-              w={{ base: 'full', md: 60 }}
-              pos="fixed"
-              h="full"
-              {...rest}>
-              <Flex h="20" alignItems="center" mx="8" justifyContent="space-between">
-                  <Text fontSize="2xl" fontFamily="monospace" fontWeight="bold">
-                    Super<span className={styles.primaryColor}>Redings</span>
-                  </Text>
-                  <CloseButton display={{ base: 'flex', md: 'none' }} onClick={onClose} />
-              </Flex>
-              {LinkItems.map((link) => (
-                <NavItem key={link.name} url={link.url} icon={link.icon} className={isActiveItem(link.name) ? styles.primaryColorBg : undefined}>
-                    {link.name}
-                </NavItem>
-              ))}
+				bg={useColorModeValue('white', 'gray.900')}
+				borderRight="1px"
+				borderRightColor={useColorModeValue('gray.200', 'gray.700')}
+				w={{ base: 'full', md: 60 }}
+				pos="fixed"
+				h="full"
+				{...rest}>
+				<Flex h="20" alignItems="center" mx="8" justifyContent="space-between">
+					<Text fontSize="2xl" fontFamily="monospace" fontWeight="bold">
+						Super<span className={styles.primaryColor}>Redings</span>
+					</Text>
+					<CloseButton display={{ base: 'flex', md: 'none' }} onClick={onClose} />
+				</Flex>
+				
+				{LinkItems.map((link) => (
+					<NavItem key={link.name} url={link.url} icon={link.icon} className={isActiveItem(link.name) ? styles.primaryColorBg : undefined}>
+						{link.name}
+					</NavItem>
+				))}
+				<Box p="4" mx="4" mr="4">
+					<Button 
+						leftIcon={user ? <BiLogOut />: <MdLogin/>}
+						onClick={handleOnClik}
+					>
+						{user ? "Logout" : "Login"}
+					</Button >
+				</Box>
+              
           </Box>
       );
   };

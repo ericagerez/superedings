@@ -9,6 +9,12 @@ const loginReducer = (state = initialState, action: any) => {
                 user: action.payload,
                 loading: false 
             };
+        case ReducerTypes.LOGOUT_USER:
+            return {
+                ...state,
+                user: '',
+                loading: false
+            }
         case ReducerTypes.SET_ERROR:
             return {
                 ...state, 
